@@ -71,20 +71,13 @@ const data = [
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
-    title: 'Professional Software Development in 2019',
+    title: 'Jedi Web Development in 2019',
     date: 'Jan 1st, 2019',
-    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
-          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
-          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+    firstParagraph: `Lucas ipsum dolor sit amet darth darth sidious sebulba dooku jinn jawa jade mothma wampa. Obi-wan kashyyyk darth solo. Solo organa twi'lek baba padmé sith biggs leia hoth. Skywalker ben lobot zabrak aayla jawa alderaan. Vader solo moff skywalker secura darth han mon. Zabrak dantooine yavin grievous sith organa antilles sidious darth. Amidala c-3po gamorrean fisto organa skywalker skywalker ewok mara. Antilles hutt wampa naboo antilles. Yoda yoda solo skywalker. Calrissian thrawn anakin skywalker mon vader amidala hutt jinn. `,
 
-    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
-          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
-          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
-          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+    secondParagraph: `Lobot mon jar grievous palpatine mon wedge organa maul. Antilles tatooine moff endor fett bespin organa. Calamari sidious kit luuke darth darth twi'lek chewbacca. Moff grievous skywalker moff. Grievous darth owen dooku han darth kenobi darth mon. Moff fisto biggs darth jabba darth palpatine gonk. Antilles mara coruscant lars dantooine luke. Tatooine yoda kashyyyk kenobi hutt boba cade. Hutt luuke darth wedge leia boba. Kashyyyk organa organa tatooine anakin skywalker. Kenobi binks ponda hutt sidious maul. `,
 
-    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
-          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
-          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+    thirdParagraph: `Windu skywalker darth gonk darth. Solo windu fett amidala darth dantooine. Skywalker organa lobot moff. Watto ventress jade qui-gon coruscant jinn luke. Palpatine moff boba palpatine sidious kenobi kessel hoth lando. Moff r2-d2 dooku ventress moff. Vader owen moff obi-wan. Lars palpatine hutt grievous organa amidala. R2-d2 baba calrissian kessel endor mace darth fett solo. Skywalker jabba moff c-3p0 skywalker cade solo darth. Dooku jango lando skywalker. Hutt ackbar hutt qui-gonn yavin. Baba twi'lek sith jinn anakin.`
   }
 ];
 
@@ -103,6 +96,7 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
 
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +106,54 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+  // create function
+
+  function articleDrop(articles) {
+    const article = document.createElement('div');
+    
+    const title = document.createElement('h2');
+    article.appendChild(title);
+    title.textContent = articles.title;
+    
+    const date = document.createElement('p');
+    article.appendChild(date);
+    date.textContent = articles.date
+   
+    const firstPara = document.createElement('p');
+    article.appendChild(firstPara);
+    firstPara.textContent = articles.firstParagraph;
+   
+    const secondPara = document.createElement('p');
+    article.appendChild(secondPara);
+    secondPara.textContent = articles.secondParagraph;
+   
+    const thirdPara = document.createElement('p');
+    article.appendChild(thirdPara);
+    thirdPara.textContent = articles.thirdParagraph;
+   
+    const button = document.createElement('span');
+    article.appendChild(button);
+    button.textContent = "Open/Close";
+  
+    article.classList.add('article');
+    button.classList.add('expandButton');
+  
+    // event listner
+    button.addEventListener('click', () => {
+      article.classList.toggle('article-open');
+    })
+  
+  
+  
+    //return
+    return article;
+  }
+  
+  const articleContent = document.querySelector('.articles');
+  
+  const articleAgain = data.map(data => {
+    articleContent.appendChild(articleDrop(data));
+  })
+
+
