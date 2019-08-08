@@ -127,6 +127,7 @@ const data = [
 
   function articleDrop(articles) {
     const article = document.createElement('div');
+ 
     
     const title = document.createElement('h2');
     article.appendChild(title);
@@ -156,20 +157,34 @@ const data = [
     button.classList.add('expandButton');
   
     // event listner
+  
+
     button.addEventListener('click', () => {
       article.classList.toggle('article-open');
     })
   
   
-  
     //return
     return article;
   }
-  
+
+
+
   const articleContent = document.querySelector('.articles');
-  
+  window.addEventListener("click", r => {
+    TweenMax.to(articleContent, 2, {x:100, ease:Bounce.easeOut});
+    });
+
+    
+    
   const articleAgain = data.map(data => {
     articleContent.appendChild(articleDrop(data));
+    const slide = document.querySelectorAll(".expandButton");
+
+    window.addEventListener("click", r => {
+    TweenMax.to(slide, 2, {x:200, ease:Bounce.easeOut});
+    });
+    
   })
 
 
